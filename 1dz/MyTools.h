@@ -103,6 +103,26 @@ namespace MyTools
     private:
         FileLoggerSingletone() {};
     };
+    
+        class Proxy {
+    private:
+        LoggerSingleton* LSingleton_;
+
+        bool CheckAccess() const {
+            std::cout << "Proxy: Checking access";
+            return true;
+        }
+        void LogCounting() const {
+            std::cout << d++ << std::endl;
+        }
+    public:
+        mutable int d = 0;
+        Proxy(LoggerSingleton& LSingleton_ = LoggerSingleton::getInstance()) {
+        }
+        ~Proxy() {
+            delete LSingleton_;
+        }
+    };
     //=============================================================================================
 
 };
