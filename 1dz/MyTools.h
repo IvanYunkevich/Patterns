@@ -113,7 +113,7 @@ namespace MyTools
             return true;
         }
         void LogCounting() const {
-            std::cout << d++ << std::endl;
+            std::cout << ++d << std::endl;
         }
     public:
         mutable int d = 0;
